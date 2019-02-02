@@ -3,6 +3,7 @@ package Tests;
 import com.sun.xml.internal.ws.server.DefaultResourceInjector;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -34,6 +35,20 @@ public class LoginTests {
         String title=driver.getTitle();
         driver.findElement(By.id("ctl00_MainContent_login_button")).click();
         Assert.assertEquals(title,"Web Orders");
+    }
+      @Test
+        public void negativeloginTest() {
+        driver.get("http://secure.smartbearsoftware.com/samples/testcomplete12/WebOrders/login.aspx");
+        driver.findElement(By.id("ctl00_MainContent_username")).sendKeys("Tester2");
+        driver.findElement(By.id("ctl00_MainContent_password")).sendKeys("test2" + Keys.ENTER);
+        String errorMsg = driver.findElement(By.id("ctl00_MainContent_status")).getText();
+
+        Assert.assertEquals(errorMsg, "Invalid Login or Password.");
+    }
+
+
+
+
     }
 @Test
 public void logout(){
