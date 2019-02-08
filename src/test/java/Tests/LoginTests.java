@@ -46,10 +46,6 @@ public class LoginTests {
         Assert.assertEquals(errorMsg, "Invalid Login or Password.");
     }
 
-
-
-
-    }
 @Test
 public void logout(){
     driver.get("http://secure.smartbearsoftware.com/samples/TestComplete12/WebOrders/Login.aspx");
